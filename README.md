@@ -6,6 +6,8 @@ S](https://github.com/LedgerHQ/ledger-nano-s) that allows the user to verify the
 backup of their BIP 39 mnemonic by comparing it to the master seed stored on the
 device.
 
+An extensive manual for the application can be found in the `docs` folder.
+
 ## Development Cycle
 
 This repository will follow a Git branching model similar to that described in
