@@ -34,7 +34,7 @@
 
 #define APP_VER_MAJOR 1
 #define APP_VER_MINOR 0
-#define APP_VER_PATCH 0
+#define APP_VER_PATCH 1
 
 // This should be enough ¯\_(ツ)_/¯
 #define APP_ROOM_CTX_STACK_SIZE 1024

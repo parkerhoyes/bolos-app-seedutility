@@ -1,4 +1,4 @@
-# BOLOS Seed Utility App v1.0.0
+# BOLOS Seed Utility App v1.0.1
 
 [This repository](https://github.com/parkerhoyes/bolos-app-seedutility) contains
 an application for the [Ledger Nano
@@ -6,7 +6,8 @@ S](https://github.com/LedgerHQ/ledger-nano-s) that allows the user to verify the
 backup of their BIP 39 mnemonic by comparing it to the master seed stored on the
 device.
 
-An extensive manual for the application can be found in the `docs` folder.
+An extensive manual for the application as well as some screenshots can be found
+in the `docs` folder.
 
 Precompiled versions of this application as well as installation instructions
 are available [on my website](https://parkerhoyes.com/bolos-apps).
