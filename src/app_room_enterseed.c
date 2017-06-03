@@ -42,15 +42,17 @@
  * Room Memory Management Strategy:
  *
  * This room always has app_room_enterseed_args_t allocated at the bottom of its stack frame, followed by seed_length
- * copies of app_room_enterseed_word_t. Then, it has either app_room_enterseed_active_t or app_room_enterseed_inactive_t
- * allocated at the top of its stack frame, depending on whether or not it is the current room.
+ * char buffers of length APP_ROOM_ENTERSEED_WORD_LEN followed by APP_ROOM_ENTERSEED_PAD_LEN padding bytes. Then, it has
+ * either app_room_enterseed_active_t or app_room_enterseed_inactive_t allocated at the top of its stack frame,
+ * depending on whether or not it is the current room.
  */
 
 #define APP_ROOM_ENTERSEED_ARGS (*((app_room_enterseed_args_t*) app_room_ctx.frame_ptr))
 #define APP_ROOM_ENTERSEED_WORDS ((char*) (&APP_ROOM_ENTERSEED_ARGS + 1))
 #define APP_ROOM_ENTERSEED_ACTIVE (*((app_room_enterseed_active_t*) (APP_ROOM_ENTERSEED_WORDS + \
-		APP_ROOM_ENTERSEED_WORDS_LEN)))
+		APP_ROOM_ENTERSEED_WORDS_LEN + APP_ROOM_ENTERSEED_PAD_LEN)))
 
+#define APP_ROOM_ENTERSEED_PAD_LEN (3 - (APP_ROOM_ENTERSEED_WORDS_LEN + 3) % 4)
 #define APP_ROOM_ENTERSEED_MENU_SIZE (APP_ROOM_ENTERSEED_ARGS.seed_length + 2)
 #define APP_ROOM_ENTERSEED_WORD_LEN (APP_SEEDUTILS_WORD_LEN_MAX + 1)
 #define APP_ROOM_ENTERSEED_WORDS_LEN (APP_ROOM_ENTERSEED_WORD_LEN * APP_ROOM_ENTERSEED_ARGS.seed_length)
@@ -142,6 +144,7 @@ static void app_room_enterseed_enter(bool up) {
 	if (up) {
 		bui_room_alloc(&app_room_ctx, APP_ROOM_ENTERSEED_WORDS_LEN);
 		os_memset(APP_ROOM_ENTERSEED_WORDS, 0, APP_ROOM_ENTERSEED_WORDS_LEN);
+		bui_room_alloc(&app_room_ctx, APP_ROOM_ENTERSEED_PAD_LEN);
 		focus = 0;
 	} else {
 		app_room_enterseed_inactive_t inactive;
