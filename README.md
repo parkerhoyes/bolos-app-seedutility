@@ -8,6 +8,9 @@ device.
 
 An extensive manual for the application can be found in the `docs` folder.
 
+Precompiled versions of this application as well as installation instructions
+are available [on my website](https://parkerhoyes.com/bolos-apps).
+
 ## Development Cycle
 
 This repository will follow a Git branching model similar to that described in
