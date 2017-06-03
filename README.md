@@ -1,4 +1,4 @@
-# BOLOS Seed Utility App v1.0.0
+# BOLOS Seed Utility App v1.0.1
 
 [This repository](https://github.com/parkerhoyes/bolos-app-seedutility) contains
 an application for the [Ledger Nano
